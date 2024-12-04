@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "fpvlock",
+    "name": "FPV Lock",
+    "description": "",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "Th3_Sl1ze"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

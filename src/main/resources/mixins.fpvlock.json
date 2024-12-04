@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.7.11",
+  "compatibilityLevel": "JAVA_8",
+  "package": "com.fpvlock.mixins",
+  "refmap": "mixins.fpvlock.refmap.json",
+  "mixins": [
+    "FPVMixin"
+  ],
+  "client": [],
+  "server": []
+}
