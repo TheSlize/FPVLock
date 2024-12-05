@@ -1,9 +1,14 @@
 package com.fpvlock;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(
         modid = FPVMain.MOD_ID,
@@ -20,13 +25,14 @@ public class FPVMain {
     public static FPVMain INSTANCE;
 
     @Mod.EventHandler
-    public void preinit(FMLPreInitializationEvent event) {
-    }
-    @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
-    @Mod.EventHandler
-    public void postinit(FMLPostInitializationEvent event) {
+    @SubscribeEvent
+    public void onPerspectiveChange(EntityViewRenderEvent.CameraSetup event) {
+        if (event.getEntity().getEntityWorld().isRemote && event.getEntity() == net.minecraft.client.Minecraft.getMinecraft().player) {
+            net.minecraft.client.Minecraft.getMinecraft().gameSettings.thirdPersonView = 0;
+        }
     }
 }
