@@ -9,6 +9,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(
         modid = FPVMain.MOD_ID,
@@ -28,7 +30,7 @@ public class FPVMain {
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
     }
-
+    @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void onPerspectiveChange(EntityViewRenderEvent.CameraSetup event) {
         if (event.getEntity().getEntityWorld().isRemote && event.getEntity() == net.minecraft.client.Minecraft.getMinecraft().player) {
